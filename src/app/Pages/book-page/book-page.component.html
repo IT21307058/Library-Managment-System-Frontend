@@ -1,0 +1,42 @@
+<div>
+    <h1>Book Page</h1>
+
+    <div class="mt-5 container">
+        <div class="card">
+            <div class="header">
+                <h4>Book List</h4>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div *ngIf="isLoading; else elseTableBlock">
+                <app-loader />
+            </div>
+
+            <ng-template #elseTableBlock>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Book id</th>
+                            <th>Author id</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let itemBook of this.books">
+                            <td>{{itemBook.bookid}}</td>
+                            <td>{{itemBook.authorId}}</td>
+                            <td>{{itemBook.title}}</td>
+                            <td>{{itemBook.description}}</td>
+                            <td>
+                                <button type="button" (click)="deleteBook($event, itemBook.bookid)" class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-template>
+        </div>
+    </div>
+</div>

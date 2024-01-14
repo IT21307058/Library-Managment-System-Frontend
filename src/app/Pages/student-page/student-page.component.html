@@ -1,0 +1,44 @@
+<div>
+    <h1>Author Page</h1>
+
+    <div class="mt-5 container">
+        <div class="card">
+            <div class="card-header">
+                <h4>Author List
+                    <a routerLink="/students/create" class="btn btn-primary float-end">Add Student</a>
+                </h4>
+            </div>
+            <div class="card-body">
+                <div *ngIf="isLoading; else elseTableBlock">
+                    <app-loader />
+                </div>
+
+                <ng-template #elseTableBlock>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Author ID</th>
+                                <th>Author Name</th>
+                                <th>Book List</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of this.students">
+                                <td>{{item.authorId}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.books}}</td>
+                                <td>
+                                    <a routerLink="/students/{{item.authorId}}/addBook" class="btn btn-success">Add Books</a>
+                                    <button type="button" (click)="deleteStudent($event, item.authorId)" class="btn btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </ng-template>
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
