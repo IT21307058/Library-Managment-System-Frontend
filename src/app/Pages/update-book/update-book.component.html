@@ -1,0 +1,50 @@
+<div>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h4>Student Update
+                    <a routerLink="/students" class="btn btn-danger float-end">Back</a>
+                </h4>
+            </div>
+            <div class="card-body">
+                <div *ngIf="isLoading; else elseForm" >
+                    <app-loader :title="loadingTitle"/>
+                </div>
+                <ng-template #elseForm>
+                    <!-- <img [src]="imageUrl" alt="Book Image" class="img-thumbnail" /> -->
+                    <form (ngSubmit)="updateBook()">
+                        <div class="mb-3">
+                            <label>Book Title</label>
+                            <input type="text" [(ngModel)]="title" name="title" class="form-control" />
+                            <!-- <span *ngIf="errors.name" class="text-danger">{{errors.name}}</span> -->
+                        </div>
+                        <div class="mb-3">
+                            <label>Description</label>
+                            <input type="text" [(ngModel)]="description" name="description" class="form-control" />
+                            <!-- <span *ngIf="errors.name" class="text-danger">{{errors.name}}</span> -->
+                        </div>
+
+                        <!-- <div class="mb-3">
+                            <label>Image Name</label>
+                            <input type="text" [(ngModel)]="imageName" name="imageName" class="form-control" /> 
+                            <span *ngIf="errors.name" class="text-danger">{{errors.name}}</span>
+
+                            <label>Upload Image</label>
+                            <input type="file" class="form-control" accept="image/*" /> 
+                           <button type="submit" class="btn btn-primary">Save</button> 
+                        </div> -->
+    
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </ng-template>
+                
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+

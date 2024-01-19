@@ -1,0 +1,29 @@
+<div>
+
+    <div class="mt-5 container">
+        <div class="card">
+            <div class="card-header">
+                <h4>Add review</h4>
+            </div>
+
+            <div class="card-body">
+                <div *ngIf="isLoading; else elseForm">
+                    <app-loader :title="LoadingTile" />
+                </div>
+                <ng-template #elseForm>
+                    <!-- <img [src]="getImageUrl(itemBook.imageName)" alt="Book Image" class="img-thumbnail" /> -->
+                    <form (ngSubmit)="AddReview()">
+                        <div class="mb-3">
+                            <label>Review Description</label>
+                            <input type="text" [(ngModel)]="reviewDescription" name="reviewDescription" class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,6 +14,8 @@ import { LoaderComponent } from './Pages/Partials/loader/loader.component';
 import { StudentPageComponent } from './Pages/student-page/student-page.component';
 import { BookCreateComponent } from './Pages/book-create/book-create.component';
 import { BookPageComponent } from './Pages/book-page/book-page.component';
+import { ReviewCreateComponent } from './Pages/review-create/review-create.component';
+import { UpdateBookComponent } from './Pages/update-book/update-book.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { BookPageComponent } from './Pages/book-page/book-page.component';
     LoaderComponent,
     StudentPageComponent,
     BookCreateComponent,
-    BookPageComponent
+    BookPageComponent,
+    ReviewCreateComponent,
+    UpdateBookComponent
   ],
   imports: [
     BrowserModule,

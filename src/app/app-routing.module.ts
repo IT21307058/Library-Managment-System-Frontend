@@ -7,6 +7,8 @@ import { StudentCreateComponent } from './Pages/student-create/student-create.co
 import { StudentPageComponent } from './Pages/student-page/student-page.component';
 import { BookCreateComponent } from './Pages/book-create/book-create.component';
 import { BookPageComponent } from './Pages/book-page/book-page.component';
+import { ReviewCreateComponent } from './Pages/review-create/review-create.component';
+import { UpdateBookComponent } from './Pages/update-book/update-book.component';
 
 const routes: Routes = [
   { path : '', component: HomePageComponent, title: 'Home page' },
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path : 'students/create', component: StudentCreateComponent, title: 'Student Create' },
   { path : 'books', component: BookPageComponent, title: 'Book Page' },
   { path : 'students/:id/addBook', component: BookCreateComponent, title: 'Create Book' },
+  { path : 'books/:id/addReview', component: ReviewCreateComponent, title: 'Add Review' },
+  { path : 'books/:id/updateBook', component: UpdateBookComponent, title: 'Update Book' },
 ];
 
 @NgModule({

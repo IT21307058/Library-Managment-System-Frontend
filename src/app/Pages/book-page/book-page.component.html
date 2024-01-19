@@ -18,7 +18,7 @@
                     <thead>
                         <tr>
                             <th>Book id</th>
-                            <th>Author id</th>
+                            <th>Author</th>
                             <th>Title</th>
                             <th>Description</th>
                             <th>Action</th>
@@ -27,15 +27,26 @@
                     <tbody>
                         <tr *ngFor="let itemBook of this.books">
                             <td>{{itemBook.bookid}}</td>
-                            <td>{{itemBook.authorId}}</td>
+                            <td>{{itemBook.author.name}}</td>
                             <td>{{itemBook.title}}</td>
                             <td>{{itemBook.description}}</td>
                             <td>
-                                <button type="button" (click)="deleteBook($event, itemBook.bookid)" class="btn btn-danger">Delete</button>
+                                <a routerLink="{{itemBook.bookid}}/updateBook" class="btn btn-primary me-2">Update Book</a>
+                                <a routerLink="{{itemBook.bookid}}/addReview" class="btn btn-primary me-2">Add Review</a>
+                                <!-- <br> -->
+                                <button type="button" (click)="deleteBook($event, itemBook.bookid)"
+                                    class="btn btn-danger">Delete</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <div class="pagination">
+                    <ul>
+                        <li *ngFor="let page of getPages()" [class.active]="page === pageNumber + 1">
+                            <a (click)="onPageChange(page)">{{ page }}</a>
+                        </li>
+                    </ul>
+                </div>
             </ng-template>
         </div>
     </div>

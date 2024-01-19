@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header">
                 <h4>Author List
-                    <a routerLink="/students/create" class="btn btn-primary float-end">Add Student</a>
+                    <a routerLink="/students/create" class="btn btn-primary float-end">Add Author</a>
                 </h4>
             </div>
             <div class="card-body">
@@ -19,7 +19,7 @@
                             <tr>
                                 <th>Author ID</th>
                                 <th>Author Name</th>
-                                <th>Book List</th>
+                                <!-- <th>Book List</th> -->
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -27,7 +27,17 @@
                             <tr *ngFor="let item of this.students">
                                 <td>{{item.authorId}}</td>
                                 <td>{{item.name}}</td>
-                                <td>{{item.books}}</td>
+                                <!-- <td>{{item.books}}</td> -->
+                                <!-- <td>
+                                    <ul *ngIf="item.books.length > 0">
+                                        <li *ngFor="let book of item.books">
+                                            <strong>Title:</strong> {{ book.title }}<br>
+                                            <strong>Description:</strong> {{ book.description }}<br>
+                                            Add other book details as needed
+                                        </li>
+                                    </ul>
+                                    <div *ngIf="item.books.length === 0">No books written.</div>
+                                </td> -->
                                 <td>
                                     <a routerLink="/students/{{item.authorId}}/addBook" class="btn btn-success">Add Books</a>
                                     <button type="button" (click)="deleteStudent($event, item.authorId)" class="btn btn-danger">Delete</button>
