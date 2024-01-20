@@ -40,4 +40,8 @@ export class BookService {
   updateBook(inputData: object, bookid: number) {
     return this.httpClient.put(`http://localhost:9091/api/book/${bookid}`, inputData)
   }
+
+  searchBook(keyword:string){
+    return this.httpClient.get(`http://localhost:9091/api/book/search/${keyword}`)
+  }
 }

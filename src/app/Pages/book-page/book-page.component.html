@@ -1,10 +1,25 @@
 <div>
-    <h1>Book Page</h1>
+    <div class="text-center mt-4">
+        <h1 class="mx_auto">Books</h1>
+    </div>
 
     <div class="mt-5 container">
+        <div class="input-group mb-2">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" [(ngModel)]="searchKeyword" />
+            <button type="button" class="btn btn-outline-primary" (click)="searchBook()" data-mdb-ripple-init>search</button>
+            <!-- <button type="button" class="btn btn-outline-primary" (click)="resetSearch()" data-mdb-ripple-init>reset</button> -->
+        </div>
+        <!-- [(ngModel)] is used for two-way data binding, and the 
+            (change) event is used to call the onSortDirectionChange 
+            method when the checkbox state changes. -->
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="sortDirectionCheckBox" [(ngModel)]="sortDir" (change) = "onSortDirectionChange()"/>
+            <label class="form-check-label" for="sortDirectionCheckBox">Toogle Sort Direction</label>
+        </div>
         <div class="card">
-            <div class="header">
-                <h4>Book List</h4>
+            <div class="text-center bg-success text-white">
+                <h4 class="mx-auto">Book List</h4>
             </div>
         </div>
 
@@ -31,22 +46,24 @@
                             <td>{{itemBook.title}}</td>
                             <td>{{itemBook.description}}</td>
                             <td>
-                                <a routerLink="{{itemBook.bookid}}/updateBook" class="btn btn-primary me-2">Update Book</a>
-                                <a routerLink="{{itemBook.bookid}}/addReview" class="btn btn-primary me-2">Add Review</a>
-                                <!-- <br> -->
+                                <a routerLink="{{itemBook.bookid}}/updateBook" class="btn btn-primary me-2">Update
+                                    Book</a>
+                                <a routerLink="{{itemBook.bookid}}/addReview" class="btn btn-primary me-2"><i
+                                        class="bi bi-yelp"></i></a>
                                 <button type="button" (click)="deleteBook($event, itemBook.bookid)"
-                                    class="btn btn-danger">Delete</button>
+                                    class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="pagination">
-                    <ul>
-                        <li *ngFor="let page of getPages()" [class.active]="page === pageNumber + 1">
-                            <a (click)="onPageChange(page)">{{ page }}</a>
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item" *ngFor="let page of getPages()" [class.active]="page === pageNumber + 1">
+                            <a class="page-link" (click)="onPageChange(page)">{{ page }}</a>
                         </li>
                     </ul>
-                </div>
+                </nav>
             </ng-template>
         </div>
     </div>
